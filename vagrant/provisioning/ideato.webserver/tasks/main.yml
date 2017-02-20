@@ -102,3 +102,14 @@
 - name: config swap for composer (https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors)
   shell: /sbin/swapon /var/swap.1
   ignore_errors: True
+
+- name: insert "Xdebug" configuration block in /etc/php.d/custom.ini
+  blockinfile:
+    dest: /etc/php.d/custom.ini
+    block: |
+      [xdebug]
+      xdebug.remote_enable=1
+      xdebug.remote_connect_back=on
+      ; vagrant default gateway | check with netstat -rn
+      xdebug.remote_host=10.0.2.2
+      xdebug.remote_port=9000

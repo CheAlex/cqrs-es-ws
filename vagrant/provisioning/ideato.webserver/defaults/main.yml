@@ -18,3 +18,4 @@ php_packages:
   - php-mysql
   - php-zip
   - php-process
+  - php-pecl-xdebug
