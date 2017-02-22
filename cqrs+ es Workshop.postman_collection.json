@@ -1,0 +1,49 @@
+{
+	"variables": [],
+	"info": {
+		"name": "cqrs+ es Workshop",
+		"_postman_id": "4e635ec3-e8dc-e683-2420-14591195d430",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"request": {
+				"url": "http://api.cqrsws.dev/products",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"url": "http://api.cqrsws.dev/products/d2ff3413-e8c9-4d01-8786-3cbf537f8c80?XDEBUG_SESSION_START",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "size",
+							"value": "XL",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
