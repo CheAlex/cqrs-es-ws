@@ -171,6 +171,8 @@ class Product implements ReadModelInterface, SerializableInterface
         $product->setBrand($data['brand']);
         $product->setCreatedAt(new \DateTimeImmutable($data['createdAt']));
 
+        $product->setSize($data['size']);
+
         if (isset($data['updatedAt'])) {
             $product->setUpdatedAt(new \DateTimeImmutable($data['updatedAt']));
         }

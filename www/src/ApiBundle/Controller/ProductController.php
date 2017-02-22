@@ -46,7 +46,7 @@ class ProductController extends Controller
         $this->get('broadway.command_handling.simple_command_bus')->dispatch(
             new UpdateProduct(
                 $productReadModel->getProductId(),
-                6,
+                $request->get('size'),
                 new \DateTimeImmutable('2017-02-15')
             )
         );
