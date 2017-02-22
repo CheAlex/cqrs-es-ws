@@ -8,36 +8,36 @@
 /app/spool/*
 
 # Cache, session files and logs (Symfony3)
-/var/cache/*
-/var/logs/*
-/var/sessions/*
-!var/cache/.gitkeep
-!var/logs/.gitkeep
-!var/sessions/.gitkeep
+/www/var/cache/*
+/www/var/logs/*
+/www/var/sessions/*
+!/www/var/cache/.gitkeep
+!/www/var/logs/.gitkeep
+!/www/var/sessions/.gitkeep
 
 # Managed by Composer
-/app/bootstrap.php.cache
-/var/bootstrap.php.cache
-/bin/*
-!bin/console
-!bin/symfony_requirements
+/www/app/bootstrap.php.cache
+/www/var/bootstrap.php.cache
+/www/bin/*
+!/www/bin/console
+!/www/bin/symfony_requirements
 
 # Assets and user uploads
-/web/bundles/
-/web/uploads/
+/www/web/bundles/
+/www/web/uploads/
 
 # Assets managed by Bower
-/web/assets/vendor/
+/www/web/assets/vendor/
 
 # PHPUnit
-/app/phpunit.xml
-/phpunit.xml
+/www/app/phpunit.xml
+/www/phpunit.xml
 
 # Build data
-/build/
+/www/build/
 
 # Composer PHAR
-/composer.phar
+/www/composer.phar
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
@@ -54,3 +54,4 @@ cgi-bin
 
 ### PHP Storm
 .idea
+/www/vendor/
