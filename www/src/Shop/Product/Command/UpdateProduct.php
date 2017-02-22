@@ -10,28 +10,20 @@ class UpdateProduct
      * @var ProductId
      */
     private $productId;
-    /**
-     * @var int
-     */
     private $size;
-
     /**
      * @var \DateTimeImmutable
      */
     private $updatedAt;
 
-    /**
-     * UpdateProduct constructor.
-     *
-     * @param ProductId          $productId
-     * @param                    $size
-     * @param \DateTimeImmutable $updatedAt
-     */
-    public function __construct(ProductId $productId, int $size, \DateTimeImmutable $updatedAt)
-    {
-        $this->productId = $productId;
+    public function __construct(
+        ProductId $productId,
+        $size,
+        \DateTimeImmutable $updatedAt
+    ) {
+        $this->productId    = $productId;
+        $this->size         = $size;
         $this->updatedAt = $updatedAt;
-        $this->size = $size;
     }
 
     /**
@@ -43,9 +35,9 @@ class UpdateProduct
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getSize(): int
+    public function getSize()
     {
         return $this->size;
     }

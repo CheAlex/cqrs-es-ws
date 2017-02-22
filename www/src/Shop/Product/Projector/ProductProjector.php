@@ -36,7 +36,6 @@ class ProductProjector extends Projector
         /** @var Product $product */
         $product = $this->repository->find($event->getProductId());
 
-        $product->setProductId($event->getProductId());
         $product->setSize($event->getSize());
         $product->setUpdatedAt($event->getUpdatedAt());
 

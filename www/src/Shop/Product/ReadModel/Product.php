@@ -46,12 +46,12 @@ class Product implements ReadModelInterface, SerializableInterface
     /**
      * @var \DateTimeImmutable
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
-     * @var int
+     * @var
      */
-    private $size;
+    protected $size;
 
     /**
      * @return string
@@ -170,7 +170,7 @@ class Product implements ReadModelInterface, SerializableInterface
         $product->setImageUrl($data['imageUrl']);
         $product->setBrand($data['brand']);
         $product->setCreatedAt(new \DateTimeImmutable($data['createdAt']));
-        $product->setSize($data['size']);
+
         if (isset($data['updatedAt'])) {
             $product->setUpdatedAt(new \DateTimeImmutable($data['updatedAt']));
         }
@@ -185,29 +185,23 @@ class Product implements ReadModelInterface, SerializableInterface
     {
         return [
             'productId' => (string)$this->productId,
-            'barcode' => $this->barcode,
-            'name' => $this->name,
-            'size' => $this->size,
-            'imageUrl' => $this->imageUrl,
-            'brand' => $this->brand,
+            'barcode'   => $this->barcode,
+            'name'      => $this->name,
+            'imageUrl'  => $this->imageUrl,
+            'brand'     => $this->brand,
+            'size'      => $this->size,
             'createdAt' => $this->createdAt->format('Y-m-d\TH:i:s.uP'),
-            'updatedAt' => is_null($this->updatedAt) ? null : $this->updatedAt->format('Y-m-d\TH:i:s.uP')
+            'updatedAt' => null === $this->updatedAt ? null : $this->updatedAt->format('Y-m-d\TH:i:s.uP')
         ];
     }
 
-    /**
-     * @param \DateTimeImmutable $updatedAt
-     */
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * @param int $size
-     */
     public function setSize($size)
     {
         $this->size = $size;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

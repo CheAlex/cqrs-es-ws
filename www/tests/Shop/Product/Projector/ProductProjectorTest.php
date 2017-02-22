@@ -56,26 +56,28 @@ class ProductProjectorTest extends ProjectorScenarioTestCase
             new \DateTimeImmutable('2017-02-14')
         );
 
-        $productUpdated = new ProductUpdated(
-            $productCreated->getProductId(),
-            5,
-            new \DateTimeImmutable('2014-02-15')
-        );
+        $size = 'XL';
+        $updatedAt = new \DateTimeImmutable('2017-02-21');
 
         $product = new Product();
-
         $product->setProductId($productCreated->getProductId());
         $product->setBarcode($productCreated->getBarcode());
         $product->setName($productCreated->getName());
         $product->setImageUrl($productCreated->getImageUrl());
         $product->setBrand($productCreated->getBrand());
         $product->setCreatedAt($productCreated->getCreatedAt());
-        $product->setUpdatedAt($productUpdated->getUpdatedAt());
-        $product->setSize($productUpdated->getSize());
+        $product->setSize($size);
+        $product->setUpdatedAt($updatedAt);
 
         $this->scenario
             ->given([$productCreated])
-            ->when($productUpdated)
+            ->when(
+                new ProductUpdated(
+                    $productCreated->getProductId(),
+                    $size,
+                    $updatedAt
+                )
+            )
             ->then([$product]);
     }
 

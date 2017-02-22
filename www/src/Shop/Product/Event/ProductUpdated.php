@@ -7,9 +7,12 @@ use Shop\Product\ValueObject\ProductId;
 
 class ProductUpdated implements SerializableInterface
 {
+    /**
+     * @var ProductId
+     */
     private $productId;
     /**
-     * @var int
+     * @var string
      */
     private $size;
     /**
@@ -17,20 +20,13 @@ class ProductUpdated implements SerializableInterface
      */
     private $updatedAt;
 
-    /**
-     * ProductUpdated constructor.
-     *
-     * @param ProductId          $productId
-     * @param int                $size
-     * @param \DateTimeImmutable $updatedAt
-     */
     public function __construct(
         ProductId $productId,
-        int $size,
+        string $size,
         \DateTimeImmutable $updatedAt
     ) {
         $this->productId = $productId;
-        $this->size = $size;
+        $this->size      = $size;
         $this->updatedAt = $updatedAt;
     }
 
@@ -43,19 +39,19 @@ class ProductUpdated implements SerializableInterface
     }
 
     /**
+     * @return string
+     */
+    public function getSize(): string
+    {
+        return $this->size;
+    }
+
+    /**
      * @return \DateTimeImmutable
      */
     public function getUpdatedAt(): \DateTimeImmutable
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * @return int
-     */
-    public function getSize(): int
-    {
-        return $this->size;
     }
 
     /**

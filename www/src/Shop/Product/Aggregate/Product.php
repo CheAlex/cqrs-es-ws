@@ -8,12 +8,12 @@ use Shop\Product\Command\CreateProduct;
 use Shop\Product\Command\UpdateProduct;
 use Shop\Product\Event\ProductCreated;
 use Shop\Product\Event\ProductUpdated;
-use Shop\Product\ValueObject\UserId;
+use Shop\Product\ValueObject\ProductId;
 
 class Product extends EventSourcedAggregateRoot
 {
     /**
-     * @var UserId
+     * @var ProductId
      */
     private $productId;
     /**
@@ -36,14 +36,6 @@ class Product extends EventSourcedAggregateRoot
      * @var \DateTimeImmutable
      */
     private $createdAt;
-    /**
-     * @var int
-     */
-    private $size;
-    /**
-     * @var \DateTimeImmutable
-     */
-    private $updatedAt;
 
     /**
      * @param CreateProduct $command
@@ -67,11 +59,15 @@ class Product extends EventSourcedAggregateRoot
         return $product;
     }
 
-    /**
-     * @param UpdateProduct $command
-     */
     public function update(UpdateProduct $command)
     {
+        if ($command->getSize() != 'XL' &&
+            $command->getSize() != 'L' &&
+            $command->getSize() != 'M'
+        ) {
+            throw new \DomainException();
+        }
+
         $this->apply(
             new ProductUpdated(
                 $command->getProductId(),
@@ -97,5 +93,6 @@ class Product extends EventSourcedAggregateRoot
     public function getAggregateRootId()
     {
         return $this->productId;
+        // TODO: Implement getAggregateRootId() method.
     }
 }
